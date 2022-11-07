@@ -10,7 +10,9 @@ module.exports = {
       },
       colors: {
         mint: {
+          50: "#9EF0D3",
           100: "#73E4BC",
+          900: "#062319",
         },
         red: {
           50: "#ffebee",
