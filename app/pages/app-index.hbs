@@ -1,15 +1,75 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-  <h1 class="text-3xl font-bold underline text-blue-700">
-    Welcome to the app!
-  </h1>
-  <div>[[ Dynamic Remake code goes here]]</div>
-    <br><br>
-    <a href="https://docs.remaketheweb.com/a-simple-example-app/">Try a simple todo app</a>
-</body>
-</html>
+<div
+    object
+    class="relative px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20"
+>
+    <div class="absolute inset-x-0 top-0 items-center justify-center hidden overflow-hidden md:flex md:inset-y-0"
+    ></div>
+    <div 
+        array
+        key="stacks"
+        class="relative grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+    >
+        {{#for stack in stacks}}
+            <div
+                object
+                key:task-title="@search"
+                key:date="@search"
+                default:task-title="To do"
+                class="flex flex-col justify-between overflow-hidden text-left transition-shadow duration-200 bg-white rounded shadow-xl group hover:shadow-2xl bg-stone-800"
+            >
+                <div class="p-5">
+                    <p 
+                        target:task-title="@innerText"
+                        edit:task-title
+                        class="mb-2 font-bold text-center text-slate-100"
+                    >{{default stack.taskTitle "My new list"}}</p>
+                    <p 
+                        target:date="@innerText"
+                        edit:date
+                        class="mb-1 text-xs text-center text-slate-100"
+                    >{{default stack.date "Date"}}</p>
+                    <div
+                        array
+                        key="taskList" 
+                        class="tasklist"
+                    >
+                        {{#for list in stack.taskList}}
+                            <div
+                                object
+                                key:task-text="@search"
+                                edit:task-text
+                                default:task-text="Thing to do"
+                                class="flex items-center p-2 my-2 transition-colors duration-200 border rounded shadow group hover:bg-mint-900 hover:border-mint-50"
+                            >
+                                <div
+                                    target:task-text="@innerText"
+                                    class="text-slate-100 text-xs transition-colors duration-200 group-hover:text-white"
+                                >
+                                    {{default list.taskText "What to do?"}}
+                                </div>
+                            </div>
+                        {{/for}}
+                    </div>
+                    <div class="container min-w-full flex flex-col items-center">
+                        <button
+                            new:list
+                            class="inline-flex items-center justify-center h-10 px-4 font-medium tracking-wide text-mint-900 transition duration-200 rounded shadow-md bg-mint-100 hover:bg-mint-50 focus:shadow-outline focus:outline-none"
+                            aria-label="add new item"
+                            title="add new item"
+                        > Add
+                        </button>
+                    </div>
+                </div>
+            </div>  
+        {{/for}}
+    </div>
+</div>
+<div class="container min-w-full flex flex-col items-center">
+    <button
+        new:stack
+        type="submit"
+        class="inline-flex items-center justify-center h-10 px-4 font-medium tracking-wide text-mint-900 transition duration-200 rounded shadow-md bg-mint-100 hover:bg-mint-50 focus:shadow-outline focus:outline-none"
+        aria-label="Add new list"
+    title="Add new list"> + Add New List
+    </button>
+</div>
