@@ -1,25 +1,18 @@
-# Layout templates
+### Gyst
 
-* Every template in Remake uses Handlebars to render itself (https://handlebarsjs.com/)
-* Every template in Remake gets access to the same template variables (https://docs.remaketheweb.com/templating/), as well as any data that you define in `/app/data/global.json`
+> An app.
 
-# Tip
+---
 
-You don't need to load Remake's front-end JS file if a user can't edit the page. So, if
-you create a new layout template, you can use the following code to make sure it's loaded if the page's author is the current user.
+###### WHAT IS THIS?
 
-```
-{{#if isPageAuthor}}
-  {{!-- Prevent loading the Remake framework if the page isn't editable --}}
-  <script src="/js/remake-init.js"></script>
-{{/if}}
-```
+This is a project made for CPSC 349 by Mike Ploythai, Alan Cortez, Michael Carey, Marl Rico.
 
-# Layouts
+###### FEATURES
 
-In order to use a layout other than the default one, add the following to the top of a page template:
-
-```
-{{ layout "layout-name" }}
-```
-
+- [x] You can make really cool accounts
+- [x] You can reset passwords
+- [x] You can make multiple lists of tasks
+- [x] Tasks can be re-organized via drag-n-drop
+- [x] You can re-edit anything relate to tasks
+- [x] Picture spin in about page
